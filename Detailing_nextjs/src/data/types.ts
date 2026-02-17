@@ -1,0 +1,189 @@
+import { type LucideIcon } from 'lucide-react';
+
+// --- SEO & Navigation ---
+
+export interface SeoMeta {
+  title: string;
+  description: string;
+  keywords: string[];
+  canonical: string;
+  ogImage?: string;
+}
+
+export interface BreadcrumbItem {
+  label: string;
+  href: string;
+}
+
+export interface InternalLink {
+  label: string;
+  href: string;
+  description?: string;
+}
+
+// --- Content Blocks ---
+
+export interface ContentSection {
+  type: 'text' | 'list' | 'process' | 'checklist';
+  heading: string;
+  body?: string;
+  items?: string[];
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface PriceTier {
+  name: string;
+  price: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
+  vehicleSizes?: { size: string; price: string }[];
+}
+
+// --- Page Data Types ---
+
+export interface ServicePageData {
+  slug: string;
+  name: string;
+  seo: SeoMeta;
+  icon: LucideIcon;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  contentSections: ContentSection[];
+  faqs: FaqItem[];
+  relatedLinks: InternalLink[];
+  schemaPrice?: string;
+}
+
+export interface PillarPageData {
+  slug: string;
+  name: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  introText: string;
+  services: {
+    slug: string;
+    name: string;
+    description: string;
+    icon: LucideIcon;
+    href: string;
+  }[];
+  contentSections: ContentSection[];
+  faqs: FaqItem[];
+  relatedLinks: InternalLink[];
+}
+
+export interface LocationHubData {
+  slug: string;
+  name: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  introText: string;
+  pillars: {
+    name: string;
+    description: string;
+    href: string;
+    icon: LucideIcon;
+  }[];
+  areas: {
+    name: string;
+    slug: string;
+    href: string;
+  }[];
+  contentSections: ContentSection[];
+  faqs: FaqItem[];
+}
+
+export interface AreaPageData {
+  slug: string;
+  name: string;
+  location: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  contentSections: ContentSection[];
+  postcodeAreas: string[];
+  coordinates: { latitude: string; longitude: string };
+  relatedLinks: InternalLink[];
+  faqs: FaqItem[];
+}
+
+export interface GuidePageData {
+  slug: string;
+  title: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  contentSections: ContentSection[];
+  faqs: FaqItem[];
+  relatedLinks: InternalLink[];
+  publishedDate: string;
+  updatedDate?: string;
+}
+
+export interface ComparePageData {
+  slug: string;
+  title: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  optionA: { name: string; pros: string[]; cons: string[] };
+  optionB: { name: string; pros: string[]; cons: string[] };
+  comparisonTable: { feature: string; optionA: string; optionB: string }[];
+  verdict: string;
+  contentSections: ContentSection[];
+  faqs: FaqItem[];
+  relatedLinks: InternalLink[];
+}
+
+export interface FaqTopicData {
+  slug: string;
+  title: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  faqs: FaqItem[];
+  relatedLinks: InternalLink[];
+}
+
+export interface PricingPageData {
+  slug: string;
+  title: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  introText: string;
+  tiers: PriceTier[];
+  faqs: FaqItem[];
+  relatedLinks: InternalLink[];
+}
+
+export interface BlogPostData {
+  slug: string;
+  title: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  category: string;
+  heroTitle: string;
+  heroDescription: string;
+  contentSections: ContentSection[];
+  faqs: FaqItem[];
+  relatedLinks: InternalLink[];
+  publishedDate: string;
+  updatedDate?: string;
+  author: string;
+}
