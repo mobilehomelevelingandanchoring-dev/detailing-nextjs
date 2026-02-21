@@ -48,4 +48,8 @@ export const mobileValetingStockport: ServicePageData = {
     { label: 'Stockport Areas', href: '/stockport/areas' },
   ],
   schemaPrice: '50',
+  // exterior = porsche-foam image: shows mobile van applying snow foam — perfect
+  // for a mobile valeting service page. Auto-inferred from the name anyway,
+  // but set explicitly here to document the pattern.
+  imageKey: 'exterior',
 };

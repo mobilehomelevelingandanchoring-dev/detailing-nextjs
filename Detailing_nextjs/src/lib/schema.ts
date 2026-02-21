@@ -171,6 +171,30 @@ export function generateImageGallerySchema(options: {
   };
 }
 
+/**
+ * Generates a Schema.org ImageObject for a service/location image.
+ * Embed this inside a Service schema (as "image") or render standalone via SchemaMarkup.
+ *
+ * Using a stable /public/images/ URL ensures Google can crawl and index the image.
+ */
+export function generateImageObjectSchema(options: {
+  contentUrl: string;
+  name: string;
+  width: number;
+  height: number;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: options.contentUrl,
+    name: options.name,
+    description: options.name,
+    width: { '@type': 'QuantitativeValue', value: options.width },
+    height: { '@type': 'QuantitativeValue', value: options.height },
+    encodingFormat: 'image/jpeg',
+  };
+}
+
 export function generateAreaSchema(options: {
   name: string;
   url: string;

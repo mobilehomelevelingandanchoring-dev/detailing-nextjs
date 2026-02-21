@@ -1,5 +1,14 @@
 import { type LucideIcon } from 'lucide-react';
 
+// --- Image Keys ---
+
+/**
+ * Which of the 3 shared service images to use on a given page.
+ * 'exterior' = porsche-foam, 'interior' = bmw-interior, 'results' = mustang-rear
+ * Omit to let inferImageKey() pick automatically from the service name.
+ */
+export type ServiceImageKey = 'exterior' | 'interior' | 'results';
+
 // --- SEO & Navigation ---
 
 export interface SeoMeta {
@@ -58,6 +67,8 @@ export interface ServicePageData {
   faqs: FaqItem[];
   relatedLinks: InternalLink[];
   schemaPrice?: string;
+  /** Which shared image to display. Defaults to auto-inferred from service name. */
+  imageKey?: ServiceImageKey;
 }
 
 export interface PillarPageData {
@@ -116,6 +127,8 @@ export interface AreaPageData {
   coordinates: { latitude: string; longitude: string };
   relatedLinks: InternalLink[];
   faqs: FaqItem[];
+  /** Which shared image to display. Defaults to 'exterior'. */
+  imageKey?: ServiceImageKey;
 }
 
 export interface GuidePageData {
