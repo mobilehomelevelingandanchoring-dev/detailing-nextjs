@@ -1,4 +1,4 @@
-import { Star, Droplets, MapPin } from 'lucide-react';
+import { Star, Droplets, MapPin, Scissors, Wind, Armchair } from 'lucide-react';
 import type { PillarPageData } from '@/data/types';
 
 export const stockportCarValetingPillar: PillarPageData = {
@@ -42,6 +42,27 @@ export const stockportCarValetingPillar: PillarPageData = {
       description: 'We come to your home, office or workplace anywhere in Stockport.',
       icon: MapPin,
       href: '/stockport/car-valeting/mobile-valeting',
+    },
+    {
+      slug: 'pet-hair-removal',
+      name: 'Pet Hair Removal',
+      description: 'Specialist extraction of embedded pet hair from seats, carpets and crevices.',
+      icon: Scissors,
+      href: '/stockport/car-valeting/pet-hair-removal',
+    },
+    {
+      slug: 'odour-removal',
+      name: 'Odour Removal',
+      description: 'Permanently eliminate smoke, pet, food and damp smells with deep cleaning and ozone treatment.',
+      icon: Wind,
+      href: '/stockport/car-valeting/odour-removal',
+    },
+    {
+      slug: 'upholstery-cleaning',
+      name: 'Upholstery Cleaning',
+      description: 'Hot water extraction for fabric seats, carpets and mats — deep stain removal and sanitisation.',
+      icon: Armchair,
+      href: '/stockport/car-valeting/upholstery-cleaning',
     },
   ],
   contentSections: [

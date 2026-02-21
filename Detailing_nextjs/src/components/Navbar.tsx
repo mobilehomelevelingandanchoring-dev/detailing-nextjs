@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Instagram, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import logo from "@/assets/logo.jpg";
 
 /* =======================
@@ -30,10 +31,14 @@ export function Navbar() {
       <nav className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-3">
-          <div className="w-16 h-16 rounded-lg overflow-hidden">
-            <img
-              src={(logo as any).src || logo}
+          <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src={logo}
               alt="SRV Detailing"
+              width={64}
+              height={64}
+              quality={100}
+              priority
               className="w-full h-full object-cover"
             />
           </div>

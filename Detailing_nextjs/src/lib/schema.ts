@@ -119,6 +119,58 @@ export function generateArticleSchema(options: {
   };
 }
 
+export function generateBlogPostingSchema(options: {
+  title: string;
+  description: string;
+  url: string;
+  publishedDate: string;
+  updatedDate?: string;
+  author?: string;
+  articleSection?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: options.title,
+    description: options.description,
+    url: `${BASE_URL}${options.url}`,
+    datePublished: options.publishedDate,
+    ...(options.updatedDate && { dateModified: options.updatedDate }),
+    ...(options.articleSection && { articleSection: options.articleSection }),
+    author: {
+      '@type': 'Organization',
+      name: options.author || BUSINESS_NAME,
+      url: BASE_URL,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: BUSINESS_NAME,
+      url: BASE_URL,
+    },
+  };
+}
+
+export function generateImageGallerySchema(options: {
+  name: string;
+  description: string;
+  url: string;
+  images: { name: string; description: string; contentUrl: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name: options.name,
+    description: options.description,
+    url: `${BASE_URL}${options.url}`,
+    image: options.images.map((img) => ({
+      '@type': 'ImageObject',
+      name: img.name,
+      description: img.description,
+      contentUrl: img.contentUrl,
+    })),
+  };
+}
+
 export function generateAreaSchema(options: {
   name: string;
   url: string;

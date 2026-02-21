@@ -1,4 +1,4 @@
-import { Car, Sparkles } from 'lucide-react';
+import { Car, Sparkles, Droplets } from 'lucide-react';
 import type { LocationHubData } from '@/data/types';
 
 export const stockportHub: LocationHubData = {
@@ -38,6 +38,12 @@ export const stockportHub: LocationHubData = {
       description: 'Professional maintenance cleaning — full valets, mini valets, interior and exterior packages.',
       href: '/stockport/car-valeting',
       icon: Car,
+    },
+    {
+      name: 'Car Wash',
+      description: 'Mobile hand car wash using the safe two-bucket method. We come to your Stockport driveway or workplace — no queues, no automated brushes.',
+      href: '/stockport/car-wash',
+      icon: Droplets,
     },
   ],
   areas: [

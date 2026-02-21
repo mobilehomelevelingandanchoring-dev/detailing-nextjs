@@ -4,6 +4,7 @@ import { getAllComparisonSlugs } from '@/data/compare/comparisons-data';
 import { getAllManchesterAreaSlugs } from '@/data/manchester/areas/areas-data';
 import { getAllStockportAreaSlugs } from '@/data/stockport/areas/areas-data';
 import { faqTopicsData } from '@/data/faq/faq-data';
+import { getAllBlogSlugs } from '@/data/blog/blog-data';
 
 const BASE = 'https://www.srvdetailing.co.uk';
 
@@ -24,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const manchesterPages: MetadataRoute.Sitemap = [
     { url: `${BASE}/manchester`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/manchester/reviews`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE}/manchester/car-wash`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     // Car Detailing pillar + services
     { url: `${BASE}/manchester/car-detailing`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/manchester/car-detailing/ceramic-coating`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
@@ -64,12 +66,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const stockportPages: MetadataRoute.Sitemap = [
     { url: `${BASE}/stockport`, lastModified: now, changeFrequency: 'weekly', priority: 0.9 },
     { url: `${BASE}/stockport/reviews`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE}/stockport/car-wash`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     // Car Detailing
     { url: `${BASE}/stockport/car-detailing`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/stockport/car-detailing/ceramic-coating`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/stockport/car-detailing/paint-correction`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/stockport/car-detailing/headlight-restoration`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/stockport/car-detailing/new-car-protection`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-detailing/interior-detailing`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-detailing/exterior-detailing`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-detailing/swirl-mark-removal`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-detailing/engine-bay-detailing`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-detailing/leather-conditioning`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/stockport/car-detailing/prices`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     // Car Valeting
     { url: `${BASE}/stockport/car-valeting`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
@@ -78,6 +86,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/stockport/car-valeting/interior-valeting`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/stockport/car-valeting/exterior-valeting`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/stockport/car-valeting/mobile-valeting`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-valeting/pet-hair-removal`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-valeting/odour-removal`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/stockport/car-valeting/upholstery-cleaning`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/stockport/car-valeting/prices`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
   ];
 
@@ -132,6 +143,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
+  // Blog (dynamic)
+  const blogPages: MetadataRoute.Sitemap = [
+    ...getAllBlogSlugs().map((slug) => ({
+      url: `${BASE}/blog/${slug}`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    })),
+  ];
+
+  // Gallery
+  const galleryPages: MetadataRoute.Sitemap = [
+    { url: `${BASE}/gallery`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE}/gallery/detailing`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE}/gallery/valeting`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+  ];
+
   return [
     ...corePages,
     ...manchesterPages,
@@ -142,5 +170,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...comparePages,
     ...pricingPages,
     ...faqPages,
+    ...blogPages,
+    ...galleryPages,
   ];
 }

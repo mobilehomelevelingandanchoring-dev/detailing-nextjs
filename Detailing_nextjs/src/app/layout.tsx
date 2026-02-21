@@ -19,53 +19,116 @@ const roboto = Roboto({
   display: "swap",
 });
 
+// ─── Site-wide metadata (child layouts/pages override individual keys) ────────
 export const metadata: Metadata = {
-  title: "Professional Mobile Car Valeting & Detailing in Manchester | SRV Detailing",
-  description: "Stockport-based mobile car valeting and detailing serving all Manchester. Paint correction, ceramic coating, interior deep cleaning. 22 years experience. Book your home or workplace visit.",
-  authors: [{ name: "SRV Detailing" }],
-  keywords: ["car valeting", "car detailing", "mobile car service", "Manchester", "Stockport", "paint correction", "ceramic coating"],
+  // metadataBase resolves all relative image/URL strings in metadata
+  metadataBase: new URL("https://www.srvdetailing.co.uk"),
+
+  applicationName: "SRV Detailing",
+  title: {
+    default:
+      "Professional Mobile Car Valeting & Detailing in Manchester | SRV Detailing",
+    // Child pages can set: title: "Page Title" and it renders as "Page Title | SRV Detailing"
+    template: "%s | SRV Detailing",
+  },
+  description:
+    "Stockport-based mobile car valeting and detailing serving all Manchester. Paint correction, ceramic coating, interior deep cleaning. 22 years experience. Book your home or workplace visit.",
+  authors: [{ name: "SRV Detailing", url: "https://www.srvdetailing.co.uk" }],
+  keywords: [
+    "car valeting",
+    "car detailing",
+    "mobile car service",
+    "Manchester",
+    "Stockport",
+    "paint correction",
+    "ceramic coating",
+    "mobile valeting Manchester",
+  ],
+  // Canonical homepage — child pages set their own canonical
   alternates: {
     canonical: "https://www.srvdetailing.co.uk/",
   },
-  openGraph: {
-    title: "Professional Mobile Car Valeting & Detailing in Manchester | SRV Detailing",
-    description: "Stockport-based mobile car valeting and detailing serving all Manchester. Paint correction, ceramic coating, interior deep cleaning. 22 years experience.",
-    type: "website",
-    images: ["https://lovable.dev/opengraph-image-p98pqg.png"],
+  manifest: "/manifest.json",
+  // Instruct crawlers — index all, follow all links
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+  // ─── Open Graph ────────────────────────────────────────────────────────────
+  openGraph: {
+    type: "website",
+    locale: "en_GB",
+    siteName: "SRV Detailing",
+    url: "https://www.srvdetailing.co.uk/",
+    title:
+      "Professional Mobile Car Valeting & Detailing in Manchester | SRV Detailing",
+    description:
+      "Stockport-based mobile car valeting and detailing serving all Manchester. Paint correction, ceramic coating, interior deep cleaning. 22 years experience.",
+    // Resolved against metadataBase → https://www.srvdetailing.co.uk/mobile-van.jpg
+    images: [
+      {
+        url: "/mobile-van.jpg",
+        width: 1200,
+        height: 630,
+        alt: "SRV Detailing mobile valeting van serving Manchester and Stockport",
+      },
+    ],
+  },
+  // ─── Twitter / X Card ──────────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
     site: "@srvdetailing",
-    images: ["https://lovable.dev/opengraph-image-p98pqg.png"],
+    creator: "@srvdetailing",
+    title:
+      "Professional Mobile Car Valeting & Detailing in Manchester | SRV Detailing",
+    description:
+      "Stockport-based mobile car valeting and detailing. Paint correction, ceramic coating. 22 years experience.",
+    images: ["/mobile-van.jpg"],
   },
 };
 
-// JSON-LD Schema
+// ─── Site-wide JSON-LD (entity hub — business identity only) ─────────────────
+// FAQ schema is intentionally NOT included here; it lives on individual pages
+// that display FAQ content so Google associates it with the correct URL.
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
+    // Primary entity — AutoDetailing subtype of LocalBusiness
     {
       "@type": "AutoDetailing",
       "@id": "https://www.srvdetailing.co.uk/#business",
       "name": "SRV Detailing",
       "url": "https://www.srvdetailing.co.uk/",
-      "logo": "https://www.srvdetailing.co.uk/logo.png",
-      "image": "https://www.srvdetailing.co.uk/images/car-detailing-manchester.jpg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.srvdetailing.co.uk/logo.png",
+        "width": 512,
+        "height": 512,
+      },
+      "image": "https://www.srvdetailing.co.uk/mobile-van.jpg",
       "telephone": "+44 7375 759686",
       "priceRange": "££",
-      "description": "SRV Detailing provides professional mobile car valeting and detailing services across Manchester, Greater Manchester, Stockport, and Tameside. With over 20 years of experience, we deliver showroom-quality results including paint correction, ceramic coatings, and full interior and exterior detailing.",
+      "description":
+        "SRV Detailing provides professional mobile car valeting and detailing services across Manchester, Greater Manchester, Stockport, and Tameside. With over 22 years of experience, we deliver showroom-quality results including paint correction, ceramic coatings, and full interior and exterior detailing.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Globe House, Globe Lane",
         "addressLocality": "Dukinfield",
         "addressRegion": "Greater Manchester",
         "postalCode": "SK16 4RG",
-        "addressCountry": "GB"
+        "addressCountry": "GB",
       },
       "geo": {
         "@type": "GeoCoordinates",
         "latitude": "53.4746",
-        "longitude": "-2.0873"
+        "longitude": "-2.0873",
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -76,76 +139,97 @@ const jsonLd = {
           "Thursday",
           "Friday",
           "Saturday",
-          "Sunday"
+          "Sunday",
         ],
         "opens": "00:00",
-        "closes": "23:59"
+        "closes": "23:59",
       },
       "areaServed": [
-        {"@type": "AdministrativeArea","name": "Manchester"},
-        {"@type": "AdministrativeArea","name": "Greater Manchester"},
-        {"@type": "AdministrativeArea","name": "Stockport"},
-        {"@type": "AdministrativeArea","name": "Tameside"}
+        { "@type": "AdministrativeArea", "name": "Manchester" },
+        { "@type": "AdministrativeArea", "name": "Greater Manchester" },
+        { "@type": "AdministrativeArea", "name": "Stockport" },
+        { "@type": "AdministrativeArea", "name": "Tameside" },
       ],
-      "sameAs": ["https://share.google/AZFyOF2xIb3XaZetX"],
-      "hasMap": "https://share.google/AZFyOF2xIb3XaZetX"
+      "sameAs": [
+        "https://share.google/AZFyOF2xIb3XaZetX",
+      ],
+      "hasMap": "https://share.google/AZFyOF2xIb3XaZetX",
     },
+    // Service entity — linked to business via provider
     {
       "@type": "Service",
       "@id": "https://www.srvdetailing.co.uk/#services",
-      "provider": {"@id": "https://www.srvdetailing.co.uk/#business"},
+      "provider": { "@id": "https://www.srvdetailing.co.uk/#business" },
       "serviceType": "Mobile Car Detailing & Valeting",
-      "areaServed": {"@type": "AdministrativeArea", "name": "Greater Manchester"},
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Greater Manchester",
+      },
       "availableChannel": {
         "@type": "ServiceChannel",
-        "serviceLocation": {"@type": "Place", "name": "Customer Location"}
-      }
+        "serviceLocation": { "@type": "Place", "name": "Customer Location" },
+      },
     },
+    // Offer catalogue — surface in rich results
     {
       "@type": "OfferCatalog",
-      "name": "Car Detailing Services",
+      "name": "Car Detailing & Valeting Services",
+      "provider": { "@id": "https://www.srvdetailing.co.uk/#business" },
       "itemListElement": [
-        {"@type": "Offer","itemOffered":{"@type": "Service","name":"Professional Car Detailing"}},
-        {"@type": "Offer","itemOffered":{"@type": "Service","name":"Mobile Car Valeting"}},
-        {"@type": "Offer","itemOffered":{"@type": "Service","name":"Paint Correction & Gloss Enhancement"}},
-        {"@type": "Offer","itemOffered":{"@type": "Service","name":"Ceramic Coating Protection"}},
-        {"@type": "Offer","itemOffered":{"@type": "Service","name":"Interior & Exterior Deep Cleaning"}}
-      ]
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Professional Car Detailing",
+            "url": "https://www.srvdetailing.co.uk/manchester/car-detailing",
+          },
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mobile Car Valeting",
+            "url": "https://www.srvdetailing.co.uk/manchester/car-valeting",
+          },
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Paint Correction & Gloss Enhancement",
+            "url": "https://www.srvdetailing.co.uk/manchester/car-detailing/paint-correction",
+          },
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Ceramic Coating Protection",
+            "url": "https://www.srvdetailing.co.uk/manchester/car-detailing/ceramic-coating",
+          },
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Interior Deep Cleaning",
+            "url": "https://www.srvdetailing.co.uk/manchester/car-detailing/interior-detailing",
+          },
+        },
+      ],
     },
+    // WebSite entity — enables Sitelinks Search Box eligibility
     {
-      "@type": "Review",
-      "itemReviewed":{"@id": "https://www.srvdetailing.co.uk/#business"},
-      "author":{"@type": "Person","name": "Verified Customer"},
-      "reviewRating":{"@type": "Rating","ratingValue": "5","bestRating": "5"},
-      "reviewBody": "Excellent mobile car detailing service in Manchester. The finish was flawless and truly showroom quality. Highly recommended."
+      "@type": "WebSite",
+      "@id": "https://www.srvdetailing.co.uk/#website",
+      "url": "https://www.srvdetailing.co.uk/",
+      "name": "SRV Detailing",
+      "description":
+        "Professional mobile car valeting and detailing in Manchester and Stockport",
+      "publisher": { "@id": "https://www.srvdetailing.co.uk/#business" },
+      "inLanguage": "en-GB",
     },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.srvdetailing.co.uk/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Do you offer mobile car detailing in Manchester?",
-          "acceptedAnswer":{"@type": "Answer","text":"Yes, SRV Detailing provides fully mobile car detailing and valeting services across Manchester, Greater Manchester, Stockport, and Tameside."}
-        },
-        {
-          "@type": "Question",
-          "name": "Are you available 24 hours?",
-          "acceptedAnswer":{"@type": "Answer","text":"Yes, we operate a 24-hour mobile car detailing service, subject to availability. Contact us to book an appointment."}
-        },
-        {
-          "@type": "Question",
-          "name": "What services do you offer?",
-          "acceptedAnswer":{"@type": "Answer","text":"We offer professional car detailing, mobile valeting, paint correction, ceramic coating, and full interior and exterior deep cleaning."}
-        },
-        {
-          "@type": "Question",
-          "name": "How can I book your service?",
-          "acceptedAnswer":{"@type": "Answer","text":"You can book by calling +44 7375 759686 or visiting our website at https://www.srvdetailing.co.uk/."}
-        }
-      ]
-    }
-  ]
+  ],
 };
 
 export default function RootLayout({

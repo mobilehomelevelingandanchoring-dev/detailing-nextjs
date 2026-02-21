@@ -1,4 +1,4 @@
-import { Car, Sparkles, Shield, MapPin } from 'lucide-react';
+import { Car, Sparkles, Shield, MapPin, Droplets } from 'lucide-react';
 import type { LocationHubData } from '@/data/types';
 
 export const manchesterHub: LocationHubData = {
@@ -40,6 +40,13 @@ export const manchesterHub: LocationHubData = {
         'Professional maintenance cleaning — full valets, mini valets, interior and exterior packages.',
       href: '/manchester/car-valeting',
       icon: Car,
+    },
+    {
+      name: 'Car Wash',
+      description:
+        'Mobile hand car wash using the safe two-bucket method. No queues, no automated brushes — we come to your Manchester location.',
+      href: '/manchester/car-wash',
+      icon: Droplets,
     },
   ],
   areas: [

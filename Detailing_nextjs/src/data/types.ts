@@ -172,6 +172,28 @@ export interface PricingPageData {
   relatedLinks: InternalLink[];
 }
 
+export interface GalleryItem {
+  id: string;
+  title: string;
+  description: string;
+  beforeImage: string;
+  afterImage: string;
+  service: string;
+  vehicle?: string;
+  location?: string;
+}
+
+export interface GalleryPageData {
+  slug: string;
+  title: string;
+  seo: SeoMeta;
+  breadcrumbs: BreadcrumbItem[];
+  heroTitle: string;
+  heroDescription: string;
+  items: GalleryItem[];
+  relatedLinks: InternalLink[];
+}
+
 export interface BlogPostData {
   slug: string;
   title: string;

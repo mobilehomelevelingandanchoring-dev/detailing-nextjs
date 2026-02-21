@@ -1,4 +1,4 @@
-import { Shield, Sparkles, Car } from 'lucide-react';
+import { Shield, Sparkles, Paintbrush, Car, Wrench, CircleDot, Armchair } from 'lucide-react';
 import type { PillarPageData } from '@/data/types';
 
 export const stockportCarDetailingPillar: PillarPageData = {
@@ -42,6 +42,41 @@ export const stockportCarDetailingPillar: PillarPageData = {
       description: 'Protect your new car from day one with ceramic coating and interior safeguarding.',
       icon: Car,
       href: '/stockport/car-detailing/new-car-protection',
+    },
+    {
+      slug: 'interior-detailing',
+      name: 'Interior Detailing',
+      description: 'Deep interior restoration — steam cleaning, leather conditioning, stain removal and UV sanitisation.',
+      icon: CircleDot,
+      href: '/stockport/car-detailing/interior-detailing',
+    },
+    {
+      slug: 'exterior-detailing',
+      name: 'Exterior Detailing',
+      description: 'Full decontamination, clay bar, machine polish and protective coating for flawless paintwork.',
+      icon: Paintbrush,
+      href: '/stockport/car-detailing/exterior-detailing',
+    },
+    {
+      slug: 'swirl-mark-removal',
+      name: 'Swirl Mark Removal',
+      description: 'Machine polishing to eliminate wash swirls, fine scratches and paint haze.',
+      icon: Sparkles,
+      href: '/stockport/car-detailing/swirl-mark-removal',
+    },
+    {
+      slug: 'engine-bay-detailing',
+      name: 'Engine Bay Detailing',
+      description: 'Safe, thorough engine bay cleaning and dressing to showroom condition.',
+      icon: Wrench,
+      href: '/stockport/car-detailing/engine-bay-detailing',
+    },
+    {
+      slug: 'leather-conditioning',
+      name: 'Leather Conditioning',
+      description: 'Professional leather cleaning, conditioning and UV protection for premium interiors.',
+      icon: Armchair,
+      href: '/stockport/car-detailing/leather-conditioning',
     },
   ],
   contentSections: [

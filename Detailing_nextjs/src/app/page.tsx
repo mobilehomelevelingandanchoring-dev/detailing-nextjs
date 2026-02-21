@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Phone,
@@ -123,10 +124,16 @@ const HeroSection = () => {
     <section className="relative min-h-[90vh] flex items-center pt-20 lg:pt-24 pb-12">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img
-          src={heroImage.src}
+        {/* next/image with priority=true prevents lazy-load deferral on the LCP element */}
+        <Image
+          src={heroImage}
           alt="Professional mobile car valeting and detailing in Manchester, applying snow foam to a Porsche"
-          className="w-full h-full object-cover"
+          fill
+          priority
+          quality={85}
+          sizes="100vw"
+          className="object-cover"
+          placeholder="blur"
         />
         {/* Dark Gradient Overlay for Maximum Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/40" />

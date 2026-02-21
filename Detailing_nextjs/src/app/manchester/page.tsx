@@ -250,6 +250,13 @@ const valetingServices = [
       "Specialist extraction using compressed air, detailing brushes and professional techniques.",
     icon: Wrench,
   },
+  {
+    name: "Car Wash",
+    href: "/manchester/car-wash",
+    description:
+      "Mobile hand car wash using the safe two-bucket method. We come to your door — no queues, no automated brushes.",
+    icon: Droplets,
+  },
 ];
 
 const manchesterAreas = [
