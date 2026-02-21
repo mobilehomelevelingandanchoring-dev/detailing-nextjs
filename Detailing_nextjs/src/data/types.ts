@@ -33,10 +33,18 @@ export interface InternalLink {
 // --- Content Blocks ---
 
 export interface ContentSection {
-  type: 'text' | 'list' | 'process' | 'checklist';
+  type: 'text' | 'list' | 'process' | 'checklist' | 'comparison';
   heading: string;
+  /** Single paragraph — use for short body copy */
   body?: string;
+  /** Multiple paragraphs — use for definition / long-form sections */
+  bodyParagraphs?: string[];
   items?: string[];
+  /** Used with type:'comparison' — renders a styled 3-column table */
+  comparison?: {
+    headers: [string, string, string];
+    rows: [string, string, string][];
+  };
 }
 
 export interface FaqItem {

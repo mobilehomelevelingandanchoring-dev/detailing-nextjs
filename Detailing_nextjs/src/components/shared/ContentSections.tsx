@@ -14,12 +14,23 @@ export function ContentSections({ sections }: ContentSectionsProps) {
             {section.heading}
           </h2>
 
+          {/* Single-paragraph body */}
           {section.body && (
             <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed">
               <p>{section.body}</p>
             </div>
           )}
 
+          {/* Multi-paragraph body — use for definition/long-form sections */}
+          {section.bodyParagraphs && section.bodyParagraphs.length > 0 && (
+            <div className="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-4">
+              {section.bodyParagraphs.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
+          )}
+
+          {/* 2-column grid with tick icons */}
           {section.type === 'list' && section.items && (
             <div className="grid md:grid-cols-2 gap-4 mt-4">
               {section.items.map((item, i) => (
@@ -31,6 +42,7 @@ export function ContentSections({ sections }: ContentSectionsProps) {
             </div>
           )}
 
+          {/* Numbered process steps */}
           {section.type === 'process' && section.items && (
             <div className="space-y-4 mt-4">
               {section.items.map((step, i) => (
@@ -44,6 +56,7 @@ export function ContentSections({ sections }: ContentSectionsProps) {
             </div>
           )}
 
+          {/* Green-tick checklist */}
           {section.type === 'checklist' && section.items && (
             <div className="space-y-3 mt-4">
               {section.items.map((item, i) => (
@@ -52,6 +65,42 @@ export function ContentSections({ sections }: ContentSectionsProps) {
                   <p className="text-slate-700">{item}</p>
                 </div>
               ))}
+            </div>
+          )}
+
+          {/* Comparison table — feature | option A | option B */}
+          {section.type === 'comparison' && section.comparison && (
+            <div className="overflow-x-auto mt-6 rounded-xl border border-slate-200 shadow-sm">
+              <table className="w-full border-collapse text-sm md:text-base">
+                <thead>
+                  <tr className="bg-primary text-white">
+                    {section.comparison.headers.map((header, i) => (
+                      <th
+                        key={i}
+                        className="text-left p-4 font-semibold whitespace-nowrap"
+                      >
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.comparison.rows.map((row, i) => (
+                    <tr key={i} className={i % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
+                      {row.map((cell, j) => (
+                        <td
+                          key={j}
+                          className={`p-4 text-slate-700 border-b border-slate-100 align-top ${
+                            j === 0 ? 'font-semibold text-slate-900 w-1/4' : ''
+                          }`}
+                        >
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </section>

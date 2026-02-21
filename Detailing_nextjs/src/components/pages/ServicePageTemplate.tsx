@@ -7,7 +7,8 @@ import { ContentSections } from '@/components/shared/ContentSections';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { CtaSection } from '@/components/shared/CtaSection';
 import { InternalLinkBlock } from '@/components/shared/InternalLinkBlock';
-import { generateServiceSchema } from '@/lib/schema';
+import { generateServiceSchema, generateLocalBusinessSchema } from '@/lib/schema';
+import { BUSINESS_NAME } from '@/data/constants';
 import type { ServicePageData } from '@/data/types';
 
 interface ServicePageTemplateProps {
@@ -16,6 +17,7 @@ interface ServicePageTemplateProps {
 }
 
 export function ServicePageTemplate({ data, location }: ServicePageTemplateProps) {
+  // Service schema — describes the specific service offered on this page
   const serviceSchema = generateServiceSchema({
     name: data.name,
     description: data.seo.description,
@@ -24,10 +26,26 @@ export function ServicePageTemplate({ data, location }: ServicePageTemplateProps
     areaServed: location,
   });
 
+  // LocalBusiness schema — reinforces the local entity signal for this location
+  const localBusinessSchema = generateLocalBusinessSchema({
+    name: `${BUSINESS_NAME} — ${data.name} in ${location}`,
+    url: data.seo.canonical.replace('https://www.srvdetailing.co.uk', ''),
+    description: data.seo.description,
+    areaServed: [location, 'Greater Manchester', 'Stockport'],
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navbar />
-      <SchemaMarkup schemas={[serviceSchema]} />
+      {/*
+        Schema output order:
+          1. Service          — rendered here
+          2. LocalBusiness    — rendered here
+          3. ImageObject      — rendered inside ServiceImageBlock
+          4. FAQPage          — rendered inside FaqAccordion
+          5. BreadcrumbList   — rendered inside HeroSection > Breadcrumbs
+      */}
+      <SchemaMarkup schemas={[serviceSchema, localBusinessSchema]} />
 
       <HeroSection
         breadcrumbs={data.breadcrumbs}
@@ -38,10 +56,10 @@ export function ServicePageTemplate({ data, location }: ServicePageTemplateProps
 
       <main className="max-w-7xl mx-auto px-4 py-16">
         {/*
-          ServiceImageBlock sits between the hero and the body copy.
-          It is below the fold on most devices, so priority=false (lazy load).
-          imageKey from data overrides auto-selection when set.
-          caption gives humans (and Google) extra context without stuffing alt text.
+          ServiceImageBlock:
+          - lazy loaded (below fold) so priority=false
+          - imageKey from data overrides auto-selection when explicitly set
+          - caption adds human-readable context without inflating alt text
         */}
         <ServiceImageBlock
           location={location}
