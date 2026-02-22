@@ -107,9 +107,11 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out forwards",
-        "slide-up": "slide-up 0.8s ease-out forwards",
-        "scale-in": "scale-in 0.4s ease-out forwards",
+        // "both" fill-mode: holds the 0% keyframe before the animation fires
+        // (prevents flash of visible content) and holds 100% after it completes.
+        "fade-in": "fade-in 0.6s ease-out both",
+        "slide-up": "slide-up 0.8s ease-out both",
+        "scale-in": "scale-in 0.4s ease-out both",
       },
       boxShadow: {
         'card': '0 4px 20px rgba(0, 0, 0, 0.08)',

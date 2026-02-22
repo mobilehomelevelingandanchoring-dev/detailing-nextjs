@@ -141,56 +141,42 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6"
+          {/* CSS animation — no framer-motion dependency, renders immediately on SSR */}
+          <div
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 [animation:fade-in_0.6s_ease-out_both]"
           >
             <Award className="w-4 h-4 text-primary" />
             22 Years of Professional Experience
-          </motion.div>
+          </div>
 
-          {/* Semantic H1 */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg"
+          {/* Semantic H1 — plain element so it paints immediately, no JS dependency */}
+          <h1
+            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-tight mb-6 drop-shadow-lg [animation:fade-in_0.6s_ease-out_both] [animation-delay:100ms]"
           >
             Professional Mobile Car Valeting & Detailing Across{" "}
             <Link href="/manchester" className="text-primary hover:text-primary/80 transition-colors">Manchester</Link>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl text-gray-200 mb-8 leading-relaxed font-medium drop-shadow-md"
+          <p
+            className="text-lg sm:text-xl text-gray-200 mb-8 leading-relaxed font-medium drop-shadow-md [animation:fade-in_0.6s_ease-out_both] [animation-delay:200ms]"
           >
             SRV Detailing provides professional mobile car valeting and detailing services
             across Manchester and Greater Manchester. Based in Stockport with over 22 years
             of experience, we bring showroom-quality vehicle care directly to your home or
             workplace—eliminating the inconvenience of driving to a garage and waiting around.
-          </motion.p>
+          </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base sm:text-lg text-gray-300 mb-10 leading-relaxed drop-shadow-md"
+          <p
+            className="text-base sm:text-lg text-gray-300 mb-10 leading-relaxed drop-shadow-md [animation:fade-in_0.6s_ease-out_both] [animation-delay:300ms]"
           >
             Whether your car needs a thorough maintenance clean to restore freshness, or
             advanced detailing to correct paint imperfections and apply long-lasting protection,
             we deliver exceptional results with the same equipment, products, and expertise you'd
             expect from a permanent studio.
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-4 mb-8"
+          <div
+            className="flex flex-col sm:flex-row gap-4 mb-8 [animation:fade-in_0.6s_ease-out_both] [animation-delay:400ms]"
           >
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-bold shadow-lg" asChild>
               <a href="tel:+447375759686">
@@ -201,14 +187,11 @@ const HeroSection = () => {
             <Button size="lg" variant="outline" className="px-8 py-6 text-lg font-bold bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm" asChild>
               <Link href="/contact">Book Your Service</Link>
             </Button>
-          </motion.div>
+          </div>
 
           {/* Quick Contact Info */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap gap-6 text-sm text-gray-300 font-medium"
+          <div
+            className="flex flex-wrap gap-6 text-sm text-gray-300 font-medium [animation:fade-in_0.6s_ease-out_both] [animation-delay:500ms]"
           >
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-primary" />
@@ -222,7 +205,7 @@ const HeroSection = () => {
               <Car className="w-4 h-4 text-primary" />
               <span>Fully Mobile Service</span>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

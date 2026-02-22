@@ -239,6 +239,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} ${roboto.variable}`}>
+      <head>
+        {/* Preconnect to Google Maps origins used by MapEmbed iframes.
+            Establishes TCP + TLS handshake early, cutting ~200-400ms per map. */}
+        <link rel="preconnect" href="https://maps.googleapis.com" />
+        <link rel="preconnect" href="https://maps.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS prefetch as fallback for browsers that skip preconnect */}
+        <link rel="dns-prefetch" href="https://maps.googleapis.com" />
+        <link rel="dns-prefetch" href="https://maps.gstatic.com" />
+      </head>
       <body className="font-body antialiased">
         <script
           type="application/ld+json"
