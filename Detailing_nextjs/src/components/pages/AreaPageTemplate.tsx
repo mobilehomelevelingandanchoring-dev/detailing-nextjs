@@ -6,8 +6,9 @@ import { ServiceImageBlock } from '@/components/shared/ServiceImageBlock';
 import { ContentSections } from '@/components/shared/ContentSections';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { CtaSection } from '@/components/shared/CtaSection';
-import { InternalLinkBlock } from '@/components/shared/InternalLinkBlock';
+import { RelatedContent } from '@/components/shared/RelatedContent';
 import { generateAreaSchema } from '@/lib/schema';
+import { inferClusterId } from '@/lib/linkClusters';
 import { MapEmbed } from '@/components/shared/MapEmbed';
 import type { AreaPageData } from '@/data/types';
 
@@ -16,6 +17,9 @@ interface AreaPageTemplateProps {
 }
 
 export function AreaPageTemplate({ data }: AreaPageTemplateProps) {
+  const clusterId = inferClusterId(data.seo.canonical);
+  const currentHref = data.seo.canonical.replace('https://www.srvdetailing.co.uk', '');
+
   const areaSchema = generateAreaSchema({
     name: data.name,
     url: data.seo.canonical.replace('https://www.srvdetailing.co.uk', ''),
@@ -83,7 +87,21 @@ export function AreaPageTemplate({ data }: AreaPageTemplateProps) {
 
         <ContentSections sections={data.contentSections} />
         <FaqAccordion faqs={data.faqs} />
-        <InternalLinkBlock links={data.relatedLinks} />
+        {/*
+          RelatedContent: for area pages, cluster links show sibling areas
+          and cross-links point to the Manchester/Stockport service pillars.
+        */}
+        {clusterId ? (
+          <RelatedContent
+            clusterId={clusterId}
+            currentHref={currentHref}
+            showCrossLinks
+            title="More Areas We Cover"
+            limit={8}
+          />
+        ) : (
+          <RelatedContent links={data.relatedLinks} title="Related Pages" />
+        )}
         <CtaSection serviceName={`Car Care in ${data.name}`} />
       </main>
 

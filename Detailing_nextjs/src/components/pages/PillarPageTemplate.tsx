@@ -5,9 +5,10 @@ import { HeroSection } from '@/components/shared/HeroSection';
 import { ContentSections } from '@/components/shared/ContentSections';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { CtaSection } from '@/components/shared/CtaSection';
-import { InternalLinkBlock } from '@/components/shared/InternalLinkBlock';
+import { RelatedContent } from '@/components/shared/RelatedContent';
 import { ServiceGrid } from '@/components/shared/ServiceGrid';
 import { generateServiceSchema } from '@/lib/schema';
+import { inferClusterId } from '@/lib/linkClusters';
 import type { PillarPageData } from '@/data/types';
 
 interface PillarPageTemplateProps {
@@ -16,6 +17,9 @@ interface PillarPageTemplateProps {
 }
 
 export function PillarPageTemplate({ data, location }: PillarPageTemplateProps) {
+  const clusterId = inferClusterId(data.seo.canonical);
+  const currentHref = data.seo.canonical.replace('https://www.srvdetailing.co.uk', '');
+
   const serviceSchema = generateServiceSchema({
     name: data.name,
     description: data.seo.description,
@@ -45,7 +49,16 @@ export function PillarPageTemplate({ data, location }: PillarPageTemplateProps) 
         <ServiceGrid services={data.services} title={`Our ${data.name} Services`} />
         <ContentSections sections={data.contentSections} />
         <FaqAccordion faqs={data.faqs} />
-        <InternalLinkBlock links={data.relatedLinks} />
+        {clusterId ? (
+          <RelatedContent
+            clusterId={clusterId}
+            currentHref={currentHref}
+            showCrossLinks
+            title="Explore More Services"
+          />
+        ) : (
+          <RelatedContent links={data.relatedLinks} title="Related Services" />
+        )}
         <CtaSection serviceName={data.name} />
       </main>
 

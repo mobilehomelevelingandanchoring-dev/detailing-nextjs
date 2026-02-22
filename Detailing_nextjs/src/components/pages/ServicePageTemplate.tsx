@@ -6,8 +6,9 @@ import { ServiceImageBlock } from '@/components/shared/ServiceImageBlock';
 import { ContentSections } from '@/components/shared/ContentSections';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { CtaSection } from '@/components/shared/CtaSection';
-import { InternalLinkBlock } from '@/components/shared/InternalLinkBlock';
+import { RelatedContent } from '@/components/shared/RelatedContent';
 import { generateServiceSchema, generateLocalBusinessSchema } from '@/lib/schema';
+import { inferClusterId } from '@/lib/linkClusters';
 import { BUSINESS_NAME } from '@/data/constants';
 import type { ServicePageData } from '@/data/types';
 
@@ -17,6 +18,10 @@ interface ServicePageTemplateProps {
 }
 
 export function ServicePageTemplate({ data, location }: ServicePageTemplateProps) {
+  // Derive topical cluster from canonical URL for automatic cross-linking
+  const clusterId = inferClusterId(data.seo.canonical);
+  const currentHref = data.seo.canonical.replace('https://www.srvdetailing.co.uk', '');
+
   // Service schema — describes the specific service offered on this page
   const serviceSchema = generateServiceSchema({
     name: data.name,
@@ -72,7 +77,22 @@ export function ServicePageTemplate({ data, location }: ServicePageTemplateProps
 
         <ContentSections sections={data.contentSections} />
         <FaqAccordion faqs={data.faqs} />
-        <InternalLinkBlock links={data.relatedLinks} />
+        {/*
+          RelatedContent uses topical cluster auto-linking when a clusterId is
+          available (derived from canonical URL), falling back to explicit
+          relatedLinks. showCrossLinks adds pillar-to-pillar links below the grid
+          (e.g. Car Detailing → Car Valeting, → Manchester Areas).
+        */}
+        {clusterId ? (
+          <RelatedContent
+            clusterId={clusterId}
+            currentHref={currentHref}
+            showCrossLinks
+            title="Related Services"
+          />
+        ) : (
+          <RelatedContent links={data.relatedLinks} title="Related Services" />
+        )}
         <CtaSection serviceName={data.name} />
       </main>
 
