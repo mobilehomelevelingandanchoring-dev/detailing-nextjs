@@ -7,7 +7,7 @@ import { ContentSections } from '@/components/shared/ContentSections';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { CtaSection } from '@/components/shared/CtaSection';
 import { RelatedContent } from '@/components/shared/RelatedContent';
-import { generateAreaSchema } from '@/lib/schema';
+import { generatePageSchema } from '@/lib/schema';
 import { inferClusterId } from '@/lib/linkClusters';
 import { MapEmbed } from '@/components/shared/MapEmbed';
 import type { AreaPageData } from '@/data/types';
@@ -20,24 +20,39 @@ export function AreaPageTemplate({ data }: AreaPageTemplateProps) {
   const clusterId = inferClusterId(data.seo.canonical);
   const currentHref = data.seo.canonical.replace('https://www.srvdetailing.co.uk', '');
 
-  const areaSchema = generateAreaSchema({
-    name: data.name,
-    url: data.seo.canonical.replace('https://www.srvdetailing.co.uk', ''),
-    description: data.seo.description,
-    latitude: data.coordinates.latitude,
-    longitude: data.coordinates.longitude,
+  /**
+   * Consolidated @graph for area pages:
+   *   Organization + AutoDetailing (area-specific geo) + BreadcrumbList + FAQPage
+   *
+   * Area pages use the area's coordinates so the LocalBusiness entity is
+   * geo-associated with the specific area, not just the business HQ.
+   */
+  const pageSchema = generatePageSchema({
+    pageUrl: currentHref,
+    breadcrumbs: data.breadcrumbs,
+    faqs: data.faqs,
+    areaGeo: data.coordinates,
+    areasServed: [data.name, data.location, 'Greater Manchester'],
   });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navbar />
-      <SchemaMarkup schemas={[areaSchema]} />
+      {/*
+        Single @graph schema per area page:
+          1. Organization       — entity hub
+          2. AutoDetailing      — LocalBusiness with area-specific geo
+          3. BreadcrumbList     — rendered here; suppressed in HeroSection/Breadcrumbs
+          4. FAQPage            — rendered here; suppressed in FaqAccordion
+      */}
+      <SchemaMarkup schemas={[pageSchema]} />
 
       <HeroSection
         breadcrumbs={data.breadcrumbs}
         title={data.heroTitle}
         description={data.heroDescription}
         badge={`Serving ${data.name}`}
+        suppressBreadcrumbSchema
       />
 
       <main className="max-w-7xl mx-auto px-4 py-16">
@@ -86,7 +101,8 @@ export function AreaPageTemplate({ data }: AreaPageTemplateProps) {
         )}
 
         <ContentSections sections={data.contentSections} />
-        <FaqAccordion faqs={data.faqs} />
+        {/* renderSchema=false: FAQPage is already in the @graph above */}
+        <FaqAccordion faqs={data.faqs} renderSchema={false} />
         {/*
           RelatedContent: for area pages, cluster links show sibling areas
           and cross-links point to the Manchester/Stockport service pillars.

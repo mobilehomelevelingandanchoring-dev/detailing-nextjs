@@ -7,7 +7,7 @@ import { ContentSections } from '@/components/shared/ContentSections';
 import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { CtaSection } from '@/components/shared/CtaSection';
 import { RelatedContent } from '@/components/shared/RelatedContent';
-import { generateServiceSchema, generateLocalBusinessSchema } from '@/lib/schema';
+import { generatePageSchema } from '@/lib/schema';
 import { inferClusterId } from '@/lib/linkClusters';
 import { BUSINESS_NAME } from '@/data/constants';
 import type { ServicePageData } from '@/data/types';
@@ -22,41 +22,45 @@ export function ServicePageTemplate({ data, location }: ServicePageTemplateProps
   const clusterId = inferClusterId(data.seo.canonical);
   const currentHref = data.seo.canonical.replace('https://www.srvdetailing.co.uk', '');
 
-  // Service schema — describes the specific service offered on this page
-  const serviceSchema = generateServiceSchema({
-    name: data.name,
-    description: data.seo.description,
-    url: data.seo.canonical.replace('https://www.srvdetailing.co.uk', ''),
-    price: data.schemaPrice,
-    areaServed: location,
-  });
-
-  // LocalBusiness schema — reinforces the local entity signal for this location
-  const localBusinessSchema = generateLocalBusinessSchema({
-    name: `${BUSINESS_NAME} — ${data.name} in ${location}`,
-    url: data.seo.canonical.replace('https://www.srvdetailing.co.uk', ''),
-    description: data.seo.description,
-    areaServed: [location, 'Greater Manchester', 'Stockport'],
+  /**
+   * Single consolidated @graph schema for this page:
+   *   Organization + AutoDetailing LocalBusiness + Service + BreadcrumbList + FAQPage
+   *
+   * We pass suppressBreadcrumbSchema to HeroSection and renderSchema={false} to
+   * FaqAccordion so those components don't output duplicate standalone scripts.
+   */
+  const pageSchema = generatePageSchema({
+    pageUrl: currentHref,
+    breadcrumbs: data.breadcrumbs,
+    faqs: data.faqs,
+    service: {
+      name: `${data.name} in ${location}`,
+      description: data.seo.description,
+      price: data.schemaPrice,
+      areaServed: location,
+    },
+    areasServed: [location, 'Greater Manchester', 'Stockport'],
   });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
       <Navbar />
       {/*
-        Schema output order:
-          1. Service          — rendered here
-          2. LocalBusiness    — rendered here
-          3. ImageObject      — rendered inside ServiceImageBlock
-          4. FAQPage          — rendered inside FaqAccordion
-          5. BreadcrumbList   — rendered inside HeroSection > Breadcrumbs
+        Single @graph schema per page:
+          1. Organization       — entity hub
+          2. AutoDetailing      — LocalBusiness with opening hours, logo, image, sameAs
+          3. Service            — the specific service described on this page
+          4. BreadcrumbList     — rendered here; suppressed in HeroSection/Breadcrumbs
+          5. FAQPage            — rendered here; suppressed in FaqAccordion
       */}
-      <SchemaMarkup schemas={[serviceSchema, localBusinessSchema]} />
+      <SchemaMarkup schemas={[pageSchema]} />
 
       <HeroSection
         breadcrumbs={data.breadcrumbs}
         title={data.heroTitle}
         description={data.heroDescription}
-        badge="Professional Service"
+        badge={`${BUSINESS_NAME} — Professional Service`}
+        suppressBreadcrumbSchema
       />
 
       <main className="max-w-7xl mx-auto px-4 py-16">
@@ -76,7 +80,8 @@ export function ServicePageTemplate({ data, location }: ServicePageTemplateProps
         />
 
         <ContentSections sections={data.contentSections} />
-        <FaqAccordion faqs={data.faqs} />
+        {/* renderSchema=false: FAQPage is already in the @graph above */}
+        <FaqAccordion faqs={data.faqs} renderSchema={false} />
         {/*
           RelatedContent uses topical cluster auto-linking when a clusterId is
           available (derived from canonical URL), falling back to explicit

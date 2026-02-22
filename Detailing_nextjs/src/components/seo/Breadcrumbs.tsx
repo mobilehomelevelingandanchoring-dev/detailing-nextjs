@@ -5,17 +5,26 @@ import { generateBreadcrumbSchema } from '@/lib/schema';
 
 interface BreadcrumbsProps {
   items: BreadcrumbItem[];
+  /**
+   * Set to false when the parent page template already outputs BreadcrumbList
+   * inside a consolidated @graph block (via generatePageSchema), to avoid
+   * duplicate schema scripts on the same page.
+   * @default true
+   */
+  renderSchema?: boolean;
 }
 
-export function Breadcrumbs({ items }: BreadcrumbsProps) {
-  const schema = generateBreadcrumbSchema(items);
+export function Breadcrumbs({ items, renderSchema = true }: BreadcrumbsProps) {
+  const schema = renderSchema ? generateBreadcrumbSchema(items) : null;
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
       <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-slate-300 flex-wrap">
         {items.map((item, index) => (
           <span key={item.href} className="flex items-center gap-1">

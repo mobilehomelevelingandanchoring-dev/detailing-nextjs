@@ -8,15 +8,28 @@ interface HeroSectionProps {
   title: string;
   description: string;
   badge?: string;
+  /**
+   * Set to true when the parent template outputs BreadcrumbList inside a
+   * consolidated @graph block (via generatePageSchema). Prevents duplicate
+   * BreadcrumbList scripts on the same page.
+   * @default false
+   */
+  suppressBreadcrumbSchema?: boolean;
 }
 
-export function HeroSection({ breadcrumbs, title, description, badge }: HeroSectionProps) {
+export function HeroSection({
+  breadcrumbs,
+  title,
+  description,
+  badge,
+  suppressBreadcrumbSchema = false,
+}: HeroSectionProps) {
   return (
     <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 text-white py-20 px-4 overflow-hidden">
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNiIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMSkiLz48L2c+PC9zdmc+')] opacity-20" />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <Breadcrumbs items={breadcrumbs} />
+        <Breadcrumbs items={breadcrumbs} renderSchema={!suppressBreadcrumbSchema} />
 
         {badge && (
           <div className="flex items-center gap-2 mt-4 mb-2">
