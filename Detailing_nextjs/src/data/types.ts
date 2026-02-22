@@ -137,6 +137,8 @@ export interface AreaPageData {
   faqs: FaqItem[];
   /** Which shared image to display. Defaults to 'exterior'. */
   imageKey?: ServiceImageKey;
+  /** Google Maps embed URL for this area. Rendered below the postcode section. */
+  mapEmbedUrl?: string;
 }
 
 export interface GuidePageData {

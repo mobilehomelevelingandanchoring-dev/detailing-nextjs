@@ -23,6 +23,7 @@ export const stockportAreas: AreaPageData[] = [
       'Premium mobile car care for Bramhall residents. Ceramic coating, paint correction and full valeting services delivered to your driveway in SK7.',
     postcodeAreas: ['SK7'],
     coordinates: { latitude: '53.3570', longitude: '-2.1627' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38090.96123268684!2d-2.2043987372132907!3d53.366790772685114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a4b55fd04519d%3A0xf4af73011359be8!2sBramhall%2C%20Stockport%2C%20UK!5e0!3m2!1sen!2s!4v1771784153730!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -76,6 +77,7 @@ export const stockportAreas: AreaPageData[] = [
       'Professional mobile car care for Cheadle, Cheadle Hulme, Gatley and Heald Green. Premium detailing and valeting on your driveway.',
     postcodeAreas: ['SK8'],
     coordinates: { latitude: '53.3767', longitude: '-2.2167' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19036.077596955867!2d-2.2276044797326353!3d53.38782167203802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a4cb5adc29405%3A0xa0cf9a1721bf9a0!2sCheadle%2C%20UK!5e0!3m2!1sen!2s!4v1771784174730!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -117,6 +119,7 @@ export const stockportAreas: AreaPageData[] = [
       'Professional mobile car care for Marple, Marple Bridge, Mellor and Compstall. Quality detailing and valeting at your door.',
     postcodeAreas: ['SK6'],
     coordinates: { latitude: '53.3950', longitude: '-2.0610' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38071.26700411155!2d-2.1039231368044478!3d53.38881479784624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a4aab202ad8e3%3A0x265e8d265bd1c909!2sMarple%2C%20UK!5e0!3m2!1sen!2s!4v1771784194402!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -158,6 +161,7 @@ export const stockportAreas: AreaPageData[] = [
       'Professional mobile car care for Hazel Grove, Poynton and High Lane. Detailing and valeting services at your door.',
     postcodeAreas: ['SK7', 'SK12'],
     coordinates: { latitude: '53.3730', longitude: '-2.1180' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38083.955929118354!2d-2.1559866370678242!3d53.37462551384943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb4cd0779b649%3A0x6cfe9585a77b65ff!2sHazel%20Grove%2C%20Stockport%2C%20UK!5e0!3m2!1sen!2s!4v1771784215258!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -199,6 +203,7 @@ export const stockportAreas: AreaPageData[] = [
       'Professional mobile car care for Heaton Moor, Heaton Mersey, Heaton Chapel and Heaton Norris. Quality car care on your doorstep.',
     postcodeAreas: ['SK4'],
     coordinates: { latitude: '53.4200', longitude: '-2.1760' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4755.662322733692!2d-2.1927777547253515!3d53.4178456333727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb3a2ebe82f51%3A0x504222a08aeb5867!2sHeaton%20Moor%2C%20Stockport%2C%20UK!5e0!3m2!1sen!2s!4v1771784234059!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -240,6 +245,7 @@ export const stockportAreas: AreaPageData[] = [
       'Professional mobile car care in the heart of Stockport. Edgeley, Stockport town centre and surrounding SK3 postcodes.',
     postcodeAreas: ['SK3'],
     coordinates: { latitude: '53.4010', longitude: '-2.1540' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9515.112893698648!2d-2.1810952362780087!3d53.400907000270784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb36c3411f8a1%3A0xe90ee6f83faef729!2sEdgeley%2C%20Stockport%2C%20UK!5e0!3m2!1sen!2s!4v1771784253438!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -281,6 +287,7 @@ export const stockportAreas: AreaPageData[] = [
       'Professional mobile car care for Reddish and surrounding areas. Quality detailing and valeting brought to your door in SK5.',
     postcodeAreas: ['SK5'],
     coordinates: { latitude: '53.4370', longitude: '-2.1550' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9506.897547029355!2d-2.1703724862356557!3d53.437636089397024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb3f33bc8dedf%3A0xca98f4410f00f28f!2sReddish%2C%20Stockport%2C%20UK!5e0!3m2!1sen!2s!4v1771784273875!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',

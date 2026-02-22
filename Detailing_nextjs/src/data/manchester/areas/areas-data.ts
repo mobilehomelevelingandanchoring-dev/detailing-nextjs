@@ -23,6 +23,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care in the heart of Manchester. We bring our fully equipped unit to your office car park, apartment parking area or any city centre location.',
     postcodeAreas: ['M1', 'M2', 'M3', 'M4'],
     coordinates: { latitude: '53.4808', longitude: '-2.2426' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d151986.118181911!2d-2.388271290309619!3d53.47233644547979!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a4d4c5226f5db%3A0xd9be143804fe6baa!2sManchester%2C%20UK!5e0!3m2!1sen!2s!4v1771783750556!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -80,6 +81,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care for Didsbury residents. From ceramic coatings for prestige vehicles to regular maintenance valets — we come to your driveway on Wilmslow Road, Barlow Moor Road or anywhere in M20.',
     postcodeAreas: ['M20'],
     coordinates: { latitude: '53.4167', longitude: '-2.2333' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9512.390262919113!2d-2.242731886263875!3d53.41308124666716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb25e64b5ca75%3A0x6fdb3fb871f94cf1!2sDidsbury%2C%20Manchester%2C%20UK!5e0!3m2!1sen!2s!4v1771783815548!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -137,6 +139,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care for Chorlton-cum-Hardy residents. Full range of detailing and valeting services delivered to your door in M21.',
     postcodeAreas: ['M21'],
     coordinates: { latitude: '53.4333', longitude: '-2.2833' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19012.541772391123!2d-2.299810829489497!3d53.44043704137739!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bad87e9f80d69%3A0xead1c26661410661!2sChorlton-cum-Hardy%2C%20Manchester%2C%20UK!5e0!3m2!1sen!2s!4v1771783840354!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -190,6 +193,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care across Salford. From Salford Quays and MediaCityUK to Ordsall and Pendleton — we bring premium car care to your location.',
     postcodeAreas: ['M5', 'M6', 'M7'],
     coordinates: { latitude: '53.4833', longitude: '-2.2667' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d37979.20133090877!2d-2.3293101348930256!3d53.491688431780005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bae0dfe455711%3A0x6df4febf58f5d816!2sSalford%2C%20UK!5e0!3m2!1sen!2s!4v1771783882090!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -231,6 +235,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care across the Trafford borough. Stretford, Urmston, Old Trafford, Sale and surrounding areas — we come to you.',
     postcodeAreas: ['M16', 'M32', 'M41'],
     coordinates: { latitude: '53.4403', longitude: '-2.3233' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d76088.5790773533!2d-2.448139870904745!3d53.418973450981476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bab879b99092b%3A0x40cf99eed6d3430!2sTrafford%2C%20UK!5e0!3m2!1sen!2s!4v1771783905713!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -273,6 +278,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care for Sale residents. Full detailing and valeting services delivered to your door in M33.',
     postcodeAreas: ['M33'],
     coordinates: { latitude: '53.4256', longitude: '-2.3241' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38042.6392032858!2d-2.3606195362100806!3d53.420818011746796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bab7ffec440d1%3A0x24be9c8c42b76580!2sSale%2C%20UK!5e0!3m2!1sen!2s!4v1771783932010!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -314,6 +320,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care for Altrincham, Hale, Bowdon and Timperley. Premium detailing and valeting for one of South Manchester\'s most prestigious areas.',
     postcodeAreas: ['WA14', 'WA15'],
     coordinates: { latitude: '53.3833', longitude: '-2.3500' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d19034.137782376944!2d-2.38405912971256!3d53.3921595695108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a52c64fb162a3%3A0x658e6a972f3186bb!2sAltrincham%2C%20UK!5e0!3m2!1sen!2s!4v1771783954186!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -355,6 +362,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care across Oldham and surrounding areas. Detailing and valeting brought to your door in OL1–OL4.',
     postcodeAreas: ['OL1', 'OL2', 'OL3', 'OL4'],
     coordinates: { latitude: '53.5408', longitude: '-2.1111' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75878.6255815785!2d-2.1760783121024927!3d53.536217204035744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb0aa67777af1%3A0x18b3b8d9a96b3258!2sOldham%2C%20UK!5e0!3m2!1sen!2s!4v1771783976882!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -396,6 +404,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care for Rochdale and Middleton residents. Full detailing and valeting brought to your door.',
     postcodeAreas: ['OL11', 'OL12', 'OL16'],
     coordinates: { latitude: '53.6097', longitude: '-2.1576' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75720.38639375588!2d-2.274146805467731!3d53.6244652181936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb88ceb3db3ab%3A0x9a885edb20da6527!2sRochdale%2C%20UK!5e0!3m2!1sen!2s!4v1771783998830!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -437,6 +446,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care across Bury, Radcliffe, Prestwich and Whitefield. Detailing and valeting at your door.',
     postcodeAreas: ['BL8', 'BL9'],
     coordinates: { latitude: '53.5933', longitude: '-2.2967' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75759.86807318345!2d-2.3808341071232135!3d53.602456164540136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487ba2d7be45c869%3A0x5ecbd6be7ddd28b4!2sBury%2C%20UK!5e0!3m2!1sen!2s!4v1771784032274!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -478,6 +488,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care for Bolton residents and businesses. Full range of detailing and valeting services delivered to your door.',
     postcodeAreas: ['BL1', 'BL2', 'BL3'],
     coordinates: { latitude: '53.5767', longitude: '-2.4267' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75782.38415086454!2d-2.5367195580672472!3d53.58990179097781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b0629dc3b1c93%3A0xcaa40cfafe557822!2sBolton%2C%20UK!5e0!3m2!1sen!2s!4v1771784052363!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -519,6 +530,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care across Wigan, Leigh and surrounding areas. Detailing and valeting delivered to your door.',
     postcodeAreas: ['WN1', 'WN2', 'WN3', 'WN4', 'WN5', 'WN6'],
     coordinates: { latitude: '53.5450', longitude: '-2.6325' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75876.6183299337!2d-2.7337898120182844!3d53.53733725167684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b04345517a4d3%3A0x5702a66b03f2d953!2sWigan%2C%20UK!5e0!3m2!1sen!2s!4v1771784075705!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',
@@ -560,6 +572,7 @@ export const manchesterAreas: AreaPageData[] = [
       'Professional mobile car care across Tameside — Ashton-under-Lyne, Stalybridge, Hyde, Denton and Dukinfield. We are based locally and know the area well.',
     postcodeAreas: ['OL5', 'OL6', 'OL7', 'SK14', 'SK15', 'SK16'],
     coordinates: { latitude: '53.4833', longitude: '-2.0833' },
+    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d75981.5630354119!2d-2.148925866418201!3d53.4787563250574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487bb61836fca3bf%3A0x40cf99eed6d33d0!2sBorough%20of%20Tameside%2C%20UK!5e0!3m2!1sen!2s!4v1771784095449!5m2!1sen!2s',
     contentSections: [
       {
         type: 'text',

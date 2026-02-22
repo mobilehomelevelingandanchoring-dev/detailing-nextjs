@@ -8,6 +8,7 @@ import { FaqAccordion } from '@/components/shared/FaqAccordion';
 import { CtaSection } from '@/components/shared/CtaSection';
 import { InternalLinkBlock } from '@/components/shared/InternalLinkBlock';
 import { generateAreaSchema } from '@/lib/schema';
+import { MapEmbed } from '@/components/shared/MapEmbed';
 import type { AreaPageData } from '@/data/types';
 
 interface AreaPageTemplateProps {
@@ -65,6 +66,18 @@ export function AreaPageTemplate({ data }: AreaPageTemplateProps) {
                 </span>
               ))}
             </div>
+          </section>
+        )}
+
+        {data.mapEmbedUrl && (
+          <section className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+              Where We Serve in {data.name}
+            </h2>
+            <MapEmbed
+              embedUrl={data.mapEmbedUrl}
+              title={`Map of ${data.name}, ${data.location}`}
+            />
           </section>
         )}
 
